@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('borrowing_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('peminjaman_id')->constrained('borrowings')->restrictOnDelete();
+            $table->foreignId('aset_id')->constrained('assets')->restrictOnDelete();
+            $table->unsignedInteger('jumlah');
             $table->timestamps();
+
+            // satu aset hanya boleh muncul satu kali dalam satu pengajuan
+            $table->unique(['peminjaman_id', 'aset_id']);
         });
     }
 

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'role', 'divisi'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -29,4 +29,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // induk: satu karyawan dapat mengajukan banyak peminjaman
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class, 'karyawan_id');
+    }
+
+     // induk: satu petugas gudang dapat memverifikasi bnyak pengembalian
+     public function returnLogs()
+     {
+        return $this->hasMany(ReturnLog::class, 'diverifikasi_oleh');
+     }
 }

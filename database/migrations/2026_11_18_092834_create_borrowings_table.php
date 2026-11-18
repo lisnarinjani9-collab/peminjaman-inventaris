@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('karyawan_id')->constrained('users')->restrictOnDelete();
+            // TAMBAHAN: 'ditolak' untuk pengajuan yang ditolak
+            $table->enum('status', ['pending', 'disetujui', 'dipinjam', 'dikembalikan', 'ditolak'])->default('pending');
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
             $table->timestamps();
         });
     }

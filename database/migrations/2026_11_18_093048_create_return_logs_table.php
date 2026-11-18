@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('return_logs', function (Blueprint $table) {
             $table->id();
+            // unique = satu pengajuan hanya punya satu catatan pengembalian (relasi 1 ke 1)
+            $table->foreignId('peminjaman_id')->unique()->constrained('borrowings')->restrictOnDelete();
+            $table->foreignId('diverifikasi_oleh')->constrained('users')->restrictOnDelete();
+            $table->enum('kondisi_kembali', ['baik', 'rusak_ringan', 'rusak_berat']);
+            // catatan kerusakan atau keterlambatan
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }
