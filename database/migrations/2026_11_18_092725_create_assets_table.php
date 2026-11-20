@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kategori_id')->constrained('categories')->restrictOnDelete();
+            $table->foreignId('kategori_id')->constrained('categories')->cascadeOnDelete();
             $table->string('nama', 150);
             $table->unsignedInteger('stok_awal');
             $table->unsignedInteger('stok_tersedia');

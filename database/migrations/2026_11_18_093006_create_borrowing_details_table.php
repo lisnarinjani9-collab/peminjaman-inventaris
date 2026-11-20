@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('borrowing_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('peminjaman_id')->constrained('borrowings')->restrictOnDelete();
-            $table->foreignId('aset_id')->constrained('assets')->restrictOnDelete();
+            $table->foreignId('peminjaman_id')->constrained('borrowings')->cascadeOnDelete();
+            $table->foreignId('aset_id')->constrained('assets')->cascadeOnDelete();
             $table->unsignedInteger('jumlah');
             $table->timestamps();
 
