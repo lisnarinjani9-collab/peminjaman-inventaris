@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin_ga\KategoriController as AdminKategoriController;
 use App\Http\Controllers\karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\petugas_gudang\DashboardController as PetugasDashboardController;
 use App\Http\Controllers\admin_ga\DashboardController as AdminDashboardController;
@@ -22,6 +23,12 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // admin GA
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    //kategori
+    Route::prefix('kategori')->group(function () {
+        Route::get('/', [AdminKategoriController::class, 'index'])->name('kategori');
+        Route::get('/create', [AdminKategoriController::class, 'create'])->name('kategori.create');
+        Route::post('/create', [AdminKategoriController::class, 'store'])->name('kategori.store');
+    });
 });
 
 // petugas gudang

@@ -17,7 +17,7 @@
 
         <li class="sidebar-label">Data Master</li>
         <li>
-            <a class="sidebar-link" href="#">
+            <a class="sidebar-link {{ request()->routeIs('admin.kategori*') ? 'active' : '' }}" href="{{ route('admin.kategori') }}">
                 <i class="bi bi-tags-fill"></i>
                 <span>Kategori</span>
             </a>
