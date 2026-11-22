@@ -25,7 +25,14 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->assets_count }}</td>
-                    <td class="text-center">-</td>
+                    <td class="d-flex justify-content-center gap-1">
+                        <a class="btn btn-sm btn-success bi bi-pencil-fill" href="{{ route('admin.kategori.edit', $item->id) }}" title="Ubah"></a>
+                        <form action="{{ route('admin.kategori.destroy', $item->id) }}" method="post" onsubmit="return confirm('Kategori beserta seluruh asetnya akan dihapus. Yakin?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger bi bi-trash-fill" title="Hapus"></button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
                 <tr>
