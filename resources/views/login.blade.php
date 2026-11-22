@@ -1,4 +1,4 @@
-@include('admin-ga.partials.head')
+@include('partials.login-head')
 
 <body>
     <div class="container-fluid">
@@ -50,7 +50,7 @@
                             <button class="btn" type="button" id="togglePassword"><i class="bi bi-eye"></i></button>
                         </div>
 
-                        @include('admin-ga.components.alert')
+                        @include('admin_ga.components.alert')
 
                         <button type="submit" class="btn btn-login w-100 mt-2">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Masuk
@@ -63,5 +63,5 @@
 
         </div>
     </div>
-@include('admin-ga.partials.script')
+@include('partials.login-script')
 </body>
