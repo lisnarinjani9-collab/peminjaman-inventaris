@@ -5,25 +5,21 @@
 @include('admin_ga.partials.head')
 
 <body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        @include('admin_ga.components.sidebar')
+    <!-- Sidebar -->
+    @include('admin_ga.components.sidebar')
 
-        <div class="main">
-            <!-- Navbar -->
-            @include('admin_ga.components.navbar')
+    <div class="main-wrapper">
+        <!-- Navbar -->
+        @include('admin_ga.components.navbar')
 
-            <div class="content">
-                <!-- Alert -->
-                @include('admin_ga.components.alert')
+        <!-- Alert -->
+        @include('admin_ga.components.alert')
 
-                <!-- Isi halaman -->
-                @yield('content')
-            </div>
+        <!-- Isi halaman -->
+        @yield('content')
 
-            <!-- Footer -->
-            @include('admin_ga.components.footer')
-        </div>
+        <!-- Footer -->
+        @include('admin_ga.components.footer')
     </div>
 
     <!-- Script -->

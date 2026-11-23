@@ -1,14 +1,14 @@
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'Admin GA') - Peminjaman Inventaris</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Dashboard') - Peminjaman Inventaris</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('asset/bootstrap-5.3.8-dist/css/bootstrap.min.css') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('spark/assets/images/favicon.ico') }}">
 
-    <!-- Bootstrap Icon -->
-    <link rel="stylesheet" href="{{ asset('asset/icons-1.13.1/font/bootstrap-icons.min.css') }}" />
+    <!-- Bootstrap dan ikon milik template -->
+    <link rel="stylesheet" href="{{ asset('spark/assets/libs/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('spark/assets/libs/bootstrap-icons/bootstrap-icons.css') }}">
 
-    <!-- Gaya kerangka halaman -->
-    <link rel="stylesheet" href="{{ asset('style/layout.css') }}" />
+    <!-- Gaya utama template -->
+    <link rel="stylesheet" href="{{ asset('spark/assets/css/main.css') }}">
 </head>
