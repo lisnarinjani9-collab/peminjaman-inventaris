@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
+use App\Http\Controllers\karyawan\PeminjamanController as KaryawanPeminjamanController;
 use App\Http\Controllers\admin_ga\AkunController as AdminAkunController;
 use App\Http\Controllers\admin_ga\AsetController as AdminAsetController;
 use App\Http\Controllers\admin_ga\KategoriController as AdminKategoriController;
@@ -17,6 +19,12 @@ Route::get('/', function () {
 Route::prefix('login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
+});
+
+// daftar akun karyawan
+Route::prefix('register')->group(function () {
+    Route::get('/', [LoginController::class, 'register'])->name('register');
+    Route::post('/', [LoginController::class, 'registerStore'])->name('register.store');
 });
 
 // logout
@@ -43,13 +51,11 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::put('/update/{aset}', [AdminAsetController::class, 'update'])->name('aset.update');
         Route::delete('/delete/{aset}', [AdminAsetController::class, 'destroy'])->name('aset.destroy');
     });
-    // Akun
+    //akunn
     Route::prefix('akun')->group(function () {
         Route::get('/', [AdminAkunController::class, 'index'])->name('akun');
         Route::get('/create', [AdminAkunController::class, 'create'])->name('akun.create');
         Route::post('/create', [AdminAkunController::class, 'store'])->name('akun.store');
-        Route::get('/update/{id}', [AdminAkunController::class, 'edit'])->name('akun.edit');
-        Route::put('/update/{akun}', [AdminAkunController::class, 'update'])->name('akun.update');
         Route::delete('/delete/{akun}', [AdminAkunController::class, 'destroy'])->name('akun.destroy');
     });
 });
@@ -62,4 +68,15 @@ Route::prefix('petugas')->as('petugas.')->group(function () {
 // karyawan
 Route::prefix('karyawan')->as('karyawan.')->group(function () {
     Route::get('/', [KaryawanDashboardController::class, 'index'])->name('dashboard');
+    //katalog
+    Route::prefix('katalog')->group(function () {
+        Route::get('/', [KaryawanKatalogController::class, 'index'])->name('katalog');
+    });
+    //peminjaman
+    Route::prefix('peminjaman')->group(function () {
+        Route::get('/', [KaryawanPeminjamanController::class, 'index'])->name('peminjaman');
+        Route::get('/create', [KaryawanPeminjamanController::class, 'create'])->name('peminjaman.create');
+        Route::post('/create', [KaryawanPeminjamanController::class, 'store'])->name('peminjaman.store');
+        Route::get('/show/{peminjaman}', [KaryawanPeminjamanController::class, 'show'])->name('peminjaman.show');
+    });
 });

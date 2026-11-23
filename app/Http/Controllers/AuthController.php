@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -65,5 +67,31 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('login')->with('success', 'Anda berhasil logout.');
+    }
+
+    // buat karyawan register
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function registerStore(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:100',
+            'email' => 'required|email|max:100|unique:users,email',
+            'divisi' => 'required|string|max:100',
+            'password' => 'required|min:8|max:255|confirmed',
+        ]);
+
+        User::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'divisi' => $request->divisi,
+            'password' => Hash::make($request->password),
+            'role' => 'karyawan',
+        ]);
+
+        return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silahkan login');
     }
 }
