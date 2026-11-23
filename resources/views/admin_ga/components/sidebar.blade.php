@@ -59,12 +59,4 @@
             </ul>
         </div>
     </div>
-
-    <div class="sidebar-profile">
-        <img src="{{ asset('spark/assets/images/avatar.png') }}" alt="Foto profil" class="sidebar-profile-img">
-        <div class="sidebar-profile-info">
-            <div class="sidebar-profile-name">{{ auth()->user()->nama }}</div>
-            <div class="sidebar-profile-email">{{ auth()->user()->email }}</div>
-        </div>
-    </div>
 </div>

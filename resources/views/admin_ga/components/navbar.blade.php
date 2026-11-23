@@ -19,11 +19,7 @@
         </button>
     </div>
 
-    <div class="navbar-actions ms-auto">
-        <button class="navbar-action-btn me-1" aria-label="Layar penuh" id="btn-fullscreen">
-            <i class="bi bi-arrows-fullscreen"></i>
-        </button>
-
+    <div class="navbar-actions ms-auto" style="grid-column: 3;">
         <div class="dropdown ms-2">
             <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false" id="profile-dropdown">
