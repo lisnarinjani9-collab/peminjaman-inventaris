@@ -11,7 +11,7 @@ class AkunController extends Controller
 {
     public function index()
     {
-        $akun = User::whereIn('role', 'petugas_gudang')->get();
+        $akun = User::where('role', 'petugas_gudang')->get();
         return view('admin_ga.pages.akun.akun', compact('akun'));
     }
 

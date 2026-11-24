@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin_ga;
 
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
-use App\Models\Category;;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AsetController extends Controller
@@ -17,7 +17,8 @@ class AsetController extends Controller
 
     public function create()
     {
-        return view('admin_ga.pages.aset.create');
+        $kategori = Category::all();
+        return view('admin_ga.pages.aset.create', compact('kategori'));
     }
 
     public function store(Request $request)
@@ -65,7 +66,7 @@ class AsetController extends Controller
             'bernilai_tinggi' => $request->bernilai_tinggi,
         ]);
 
-        return redirect()->route('admin.aset')->with('succes', 'Aset berhasil diubah');
+        return redirect()->route('admin.aset')->with('success', 'Aset berhasil diubah');
     }
 
     public function destroy(Asset $aset)

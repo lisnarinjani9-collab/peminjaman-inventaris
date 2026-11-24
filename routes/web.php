@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\petugas_gudang\PengajuanController as PetugasPengajuanController;
 use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
 use App\Http\Controllers\karyawan\PeminjamanController as KaryawanPeminjamanController;
 use App\Http\Controllers\admin_ga\AkunController as AdminAkunController;
@@ -63,6 +64,12 @@ Route::prefix('admin')->as('admin.')->group(function () {
 // petugas gudang
 Route::prefix('petugas')->as('petugas.')->group(function () {
     Route::get('/', [PetugasDashboardController::class, 'index'])->name('dashboard');
+    //pengajuan
+    Route::prefix('pengajuan')->group(function () {
+        Route::get('/', [PetugasPengajuanController::class, 'index'])->name('pengajuan');
+        Route::get('/update/{id}', [PetugasPengajuanController::class, 'edit'])->name('pengajuan.verifikasi');
+        Route::put('/update/{peminjaman}', [PetugasPengajuanController::class, 'update'])->name('pengajuan.update');
+    });
 });
 
 // karyawan
