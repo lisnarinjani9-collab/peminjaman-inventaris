@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Asset;
 use App\Models\Borrowing;
 use App\Models\BorrowingDetail;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
     public function index()
     {
-        $peminjaman = Borrowing::with('details.asset')->where('karyawan_id', auth()->user()->id)->latest()->get();
+        $peminjaman = Borrowing::with('details.asset')->where('karyawan_id', Auth::id())->latest()->get();
         return view('karyawan.pages.peminjaman.peminjaman', compact('peminjaman'));
     }
 
@@ -42,7 +43,7 @@ class PeminjamanController extends Controller
         }
 
         $peminjaman = Borrowing::create([
-            'karyawan_id' => auth()->user()->id,
+            'karyawan_id' => Auth::id(),
             'status' => 'pending',
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $request->tanggal_kembali,
@@ -61,7 +62,7 @@ class PeminjamanController extends Controller
 
     public function show(Borrowing $peminjaman)
     {
-        if ($peminjaman->karyawan_id != auth()->user()->id) {
+        if ($peminjaman->karyawan_id != Auth::id()) {
             abort(403);
         }
         $peminjaman->load('details.asset');

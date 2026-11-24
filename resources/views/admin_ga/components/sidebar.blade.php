@@ -27,15 +27,15 @@
                     </a>
                 </li>
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Aset">
+                    <a href="{{ route('admin.aset') }}" class="sidebar-menu-link {{ request()->routeIs('admin.aset*') ? 'active' : '' }}" title="Aset">
                         <i class="bi bi-boxes"></i>
                         <span>Aset</span>
                     </a>
                 </li>
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Akun">
+                    <a href="{{ route('admin.akun') }}" class="sidebar-menu-link {{ request()->routeIs('admin.akun*') ? 'active' : '' }}" title="Akun Petugas">
                         <i class="bi bi-people-fill"></i>
-                        <span>Akun</span>
+                        <span>Akun Petugas</span>
                     </a>
                 </li>
             </ul>

@@ -23,7 +23,6 @@
         <div class="dropdown ms-2">
             <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false" id="profile-dropdown">
-                <img src="{{ asset('spark/assets/images/avatar.png') }}" alt="Foto profil" class="navbar-profile-img">
                 <span class="navbar-profile-name d-none d-md-inline">{{ auth()->user()->nama }}</span>
                 <i class="bi bi-chevron-down navbar-profile-caret"></i>
             </button>

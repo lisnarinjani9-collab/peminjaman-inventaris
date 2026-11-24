@@ -3,22 +3,61 @@
 @section('title', 'Ubah Aset')
 
 @section('content')
-<div class="col-md-8 col-lg-6 mx-auto">
-    <a class="btn btn-sm btn-dark bi bi-arrow-left mb-3" href="{{ route('admin.aset') }}"><span class="mx-1">Kembali</span></a>
-
-    <div class="card-box">
-        <h4 class="page-title mb-3">Ubah Aset</h4>
-
-        <form action="{{ route('admin.aset.update', $aset->id) }}" method="post">
-            @csrf
-            @method('PUT')
-            <label class="form-label" for="nama">Nama Aset</label>
-            <input class="form-control" type="text" name="nama" id="nama" value="{{ old('nama', $aset->nama) }}" maxlength="100" required>
-
-            <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-dark w-50" type="submit">Ubah aset</button>
-            </div>
-        </form>
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Ubah Aset</h1>
+        <p class="page-subtitle">Ubah data aset. Stok berubah otomatis saat serah terima dan pengembalian.</p>
     </div>
+    <a href="{{ route('admin.aset') }}" class="btn-custom btn-custom-light"><i class="bi bi-arrow-left"></i> Kembali</a>
+</div>
+
+<div class="card p-4 border-light shadow-sm col-lg-8">
+    <form action="{{ route('admin.aset.update', $aset->id) }}" method="post">
+        @csrf
+        @method('PUT')
+
+        <div class="mb-3">
+            <label for="kategori_id" class="form-label-custom">Kategori</label>
+            <select class="form-select-custom" name="kategori_id" id="kategori_id" required>
+                @foreach ($kategori as $item)
+                <option value="{{ $item->id }}" {{ old('kategori_id', $aset->kategori_id) == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="nama" class="form-label-custom">Nama Aset</label>
+            <input type="text" class="form-control-custom" name="nama" id="nama" value="{{ old('nama', $aset->nama) }}" maxlength="150" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label-custom">Stok Awal</label>
+            <input type="text" class="form-control-custom" value="{{ $aset->stok_awal }}" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label-custom">Stok Tersedia</label>
+            <input type="text" class="form-control-custom" value="{{ $aset->stok_tersedia }}" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label for="kondisi" class="form-label-custom">Kondisi</label>
+            <select class="form-select-custom" name="kondisi" id="kondisi" required>
+                <option value="baik" {{ old('kondisi', $aset->kondisi) == 'baik' ? 'selected' : '' }}>Baik</option>
+                <option value="rusak_ringan" {{ old('kondisi', $aset->kondisi) == 'rusak_ringan' ? 'selected' : '' }}>Rusak Ringan</option>
+                <option value="rusak_berat" {{ old('kondisi', $aset->kondisi) == 'rusak_berat' ? 'selected' : '' }}>Rusak Berat</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="bernilai_tinggi" class="form-label-custom">Aset Bernilai Tinggi</label>
+            <select class="form-select-custom" name="bernilai_tinggi" id="bernilai_tinggi" required>
+                <option value="0" {{ old('bernilai_tinggi', $aset->bernilai_tinggi) == 0 ? 'selected' : '' }}>Tidak</option>
+                <option value="1" {{ old('bernilai_tinggi', $aset->bernilai_tinggi) == 1 ? 'selected' : '' }}>Ya</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-custom btn-custom-primary"><i class="bi bi-check-lg"></i> Simpan Perubahan</button>
+    </form>
 </div>
 @endsection

@@ -12,7 +12,7 @@ class AsetController extends Controller
     public function index()
     {
         $aset = Asset::with('category')->get();
-        return view('admin_ga.pages.aset.aset', compact('kategori'));
+        return view('admin_ga.pages.aset.aset', compact('aset'));
     }
 
     public function create()

@@ -38,7 +38,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/', [AdminKategoriController::class, 'index'])->name('kategori');
         Route::get('/create', [AdminKategoriController::class, 'create'])->name('kategori.create');
         Route::post('/create', [AdminKategoriController::class, 'store'])->name('kategori.store');
-        Route::get('/update{id}', [AdminKategoriController::class, 'edit'])->name('kategori.edit');
+        Route::get('/update/{id}', [AdminKategoriController::class, 'edit'])->name('kategori.edit');
         Route::put('/update/{kategori}', [AdminKategoriController::class, 'update'])->name('kategori.update');
         Route::delete('/delete/{kategori}', [AdminKategoriController::class, 'destroy'])->name('kategori.destroy');
     });
