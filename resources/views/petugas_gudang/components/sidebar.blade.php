@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Serah Terima">
+                    <a href="{{ route('petugas.serah_terima') }}" class="sidebar-menu-link {{ request()->routeIs('petugas.serah_terima*') ? 'active' : '' }}" title="Serah Terima">
                         <i class="bi bi-box-arrow-right"></i>
                         <span>Serah Terima</span>
                     </a>

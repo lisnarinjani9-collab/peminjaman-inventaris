@@ -11,7 +11,6 @@ class PengajuanController extends Controller
     public function index()
     {
         $pengajuan = Borrowing::with('karyawan', 'details.asset')
-        ->where('status', 'pending')
         ->whereDoesntHave('details.asset', function ($query) {
             $query->where('bernilai_tinggi', 1);
         })
@@ -23,7 +22,7 @@ class PengajuanController extends Controller
     public function edit($id)
     {
         $peminjaman = Borrowing::with('karyawan', 'details.asset')->findOrFail($id);
-        return view('petugas_gudang.pages.pengajuan.update', compact('peminjaman'));
+        return view('petugas_gudang.pages.pengajuan.validasi', compact('peminjaman'));
     }
 
     public function update(Request $request, Borrowing $peminjaman)
@@ -63,4 +62,10 @@ class PengajuanController extends Controller
 
         return redirect()->route('petugas.pengajuan')->with('success', 'Pengajuan berhasil disetujui');
     }
+
+    public function show($id)
+{
+    $peminjaman = Borrowing::with('karyawan', 'details.asset')->findOrFail($id);
+    return view('petugas_gudang.pages.pengajuan.show', compact('peminjaman'));
+}
 }

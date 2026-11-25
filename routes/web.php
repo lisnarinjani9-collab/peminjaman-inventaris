@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\petugas_gudang\SerahTerimaController as PetugasSerahTerimaController;
 use App\Http\Controllers\petugas_gudang\PengajuanController as PetugasPengajuanController;
 use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
 use App\Http\Controllers\karyawan\PeminjamanController as KaryawanPeminjamanController;
@@ -67,8 +68,14 @@ Route::prefix('petugas')->as('petugas.')->group(function () {
     //pengajuan
     Route::prefix('pengajuan')->group(function () {
         Route::get('/', [PetugasPengajuanController::class, 'index'])->name('pengajuan');
-        Route::get('/update/{id}', [PetugasPengajuanController::class, 'edit'])->name('pengajuan.verifikasi');
+        Route::get('/update/{id}', [PetugasPengajuanController::class, 'edit'])->name('pengajuan.validasi');
         Route::put('/update/{peminjaman}', [PetugasPengajuanController::class, 'update'])->name('pengajuan.update');
+        Route::get('/show/{id}', [PetugasPengajuanController::class, 'show'])->name('pengajuan.show');
+    });
+    //serah terima
+    Route::prefix('serah-terima')->group(function () {
+        Route::get('/', [PetugasSerahTerimaController::class, 'index'])->name('serah_terima');
+        Route::put('/update/{peminjaman}', [PetugasSerahTerimaController::class, 'update'])->name('serah_terima.update');
     });
 });
 
