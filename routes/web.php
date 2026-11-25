@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
+use App\Http\Controllers\karyawan\PeminjamanController as KaryawanPeminjamanController;
+use App\Http\Controllers\karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\petugas_gudang\PengembalianController as PetugasPengembalianController;
 use App\Http\Controllers\petugas_gudang\SerahTerimaController as PetugasSerahTerimaController;
 use App\Http\Controllers\petugas_gudang\PengajuanController as PetugasPengajuanController;
-use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
-use App\Http\Controllers\karyawan\PeminjamanController as KaryawanPeminjamanController;
+use App\Http\Controllers\petugas_gudang\DashboardController as PetugasDashboardController;
+use App\Http\Controllers\admin_ga\LaporanController as AdminLaporanController;
+use App\Http\Controllers\admin_ga\PersetujuanController as AdminPersetujuanController;
 use App\Http\Controllers\admin_ga\AkunController as AdminAkunController;
 use App\Http\Controllers\admin_ga\AsetController as AdminAsetController;
 use App\Http\Controllers\admin_ga\KategoriController as AdminKategoriController;
-use App\Http\Controllers\karyawan\DashboardController as KaryawanDashboardController;
-use App\Http\Controllers\petugas_gudang\DashboardController as PetugasDashboardController;
 use App\Http\Controllers\admin_ga\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AuthController as LoginController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +63,15 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::post('/create', [AdminAkunController::class, 'store'])->name('akun.store');
         Route::delete('/delete/{akun}', [AdminAkunController::class, 'destroy'])->name('akun.destroy');
     });
+    //persetujuan (aset yg nilainyq tinggi)
+    Route::prefix('persetujuan')->group(function () {
+        Route::get('/', [AdminPersetujuanController::class, 'index'])->name('persetujuan');
+        Route::get('/update/{id}', [AdminPersetujuanController::class, 'edit'])->name('persetujuan.validasi');
+        Route::put('/update/{peminjaman}', [AdminPersetujuanController::class, 'update'])->name('persetujuan.update');
+        Route::get('/show/{id}', [AdminPersetujuanController::class, 'show'])->name('persetujuan.show');
+    });
+    //laporan
+    Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('laporan');
 });
 
 // petugas gudang
