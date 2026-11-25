@@ -14,6 +14,9 @@ use App\Http\Controllers\admin_ga\AsetController as AdminAsetController;
 use App\Http\Controllers\admin_ga\KategoriController as AdminKategoriController;
 use App\Http\Controllers\admin_ga\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AuthController as LoginController;
+use App\Http\middleware\CekAdminGA;
+use App\Http\middleware\CekPetugasGudang;
+use App\Http\middleware\CekKaryawan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,7 +39,7 @@ Route::prefix('register')->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // admin GA
-Route::prefix('admin')->as('admin.')->group(function () {
+Route::prefix('admin')->as('admin.')->middleware('admin_ga')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
     //kategori
     Route::prefix('kategori')->group(function () {
@@ -75,7 +78,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
 });
 
 // petugas gudang
-Route::prefix('petugas')->as('petugas.')->group(function () {
+Route::prefix('petugas')->as('petugas.')->middleware('petugas_gudang')->group(function () {
     Route::get('/', [PetugasDashboardController::class, 'index'])->name('dashboard');
     //pengajuan
     Route::prefix('pengajuan')->group(function () {
@@ -99,7 +102,7 @@ Route::prefix('petugas')->as('petugas.')->group(function () {
 });
 
 // karyawan
-Route::prefix('karyawan')->as('karyawan.')->group(function () {
+Route::prefix('karyawan')->as('karyawan.')->middleware('karyawan')->group(function () {
     Route::get('/', [KaryawanDashboardController::class, 'index'])->name('dashboard');
     //katalog
     Route::prefix('katalog')->group(function () {

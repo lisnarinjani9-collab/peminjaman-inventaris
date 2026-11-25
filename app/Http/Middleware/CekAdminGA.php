@@ -23,7 +23,7 @@ class CekAdminGA
         if (Auth::user()->role !== 'admin_ga') {
             abort(403, 'Anda tidak memiliki akses ke halaman ini');
         }
-        
+
         return $next($request);
     }
 }
