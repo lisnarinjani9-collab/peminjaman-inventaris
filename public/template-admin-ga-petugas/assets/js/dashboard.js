@@ -1,12 +1,12 @@
-/* 
+/*
 ========================================================================
    BOOTSTRAP 5 ADMIN TEMPLATE - SPARK ADMIN
    DASHBOARD CORE JAVASCRIPT MODULE
    Developed with premium UI/UX standards
 
    Template Name: Spark Admin
-   Version: 1.0 
-   Author: Spark Admin Team 
+   Version: 1.0
+   Author: Spark Admin Team
    Email: hello.sparkadmin@gmail.com
    URL: https://sparkadmin.web.id
 ========================================================================
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // -----------------------------------------------------------------
     const sidebar = document.querySelector('.sidebar-wrapper');
     const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-    
+
     // Create and append backdrop overlay for mobile sidebar
     let overlay = document.createElement('div');
     overlay.className = 'sidebar-overlay';
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 fontFamily: 'Plus Jakarta Sans, sans-serif'
             },
-            colors: ['#072F1F', '#B4F105'], // Dark Green (Income), Lime Green (Expenses)
+            colors: ['#12294d', '#f5b301'], // Dark Green (Income), Lime Green (Expenses)
             states: {
                 hover: {
                     filter: {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 show: false // Custom legends are drawn statically in HTML to match reference layout
             },
             grid: {
-                borderColor: '#E9EFEF',
+                borderColor: '#e6ebf2',
                 strokeDashArray: 4,
                 yaxis: {
                     lines: {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                 labels: {
                     style: {
-                        colors: '#6C7E75',
+                        colors: '#64748b',
                         fontSize: '11px',
                         fontWeight: 500
                     }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fontFamily: 'Plus Jakarta Sans, sans-serif'
             },
             labels: ['View Count', 'Percentage', 'Sales'],
-            colors: ['#B4F105', '#051C12', '#F97316'], // Lime, Forest Dark, Orange
+            colors: ['#f5b301', '#0b1b33', '#F97316'], // Lime, Forest Dark, Orange
             states: {
                 hover: {
                     filter: {
@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                 show: true,
                                 fontSize: '12px',
                                 fontWeight: 500,
-                                color: '#6C7E75',
+                                color: '#64748b',
                                 offsetY: -8
                             },
                             value: {
                                 show: true,
                                 fontSize: '26px',
                                 fontWeight: 800,
-                                color: '#0B130F',
+                                color: '#0f172a',
                                 offsetY: 8,
                                 formatter: function (val) {
                                     return val + "%";
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 label: 'Total Count',
                                 fontSize: '11px',
                                 fontWeight: 500,
-                                color: '#6C7E75',
+                                color: '#64748b',
                                 formatter: function (w) {
                                     return '565K';
                                 }
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // -----------------------------------------------------------------
     const datePickerTrigger = document.querySelector('#date-picker-trigger');
     const selectedRangeText = document.querySelector('#selected-date-range');
-    
+
     if (datePickerTrigger && selectedRangeText) {
         flatpickr(datePickerTrigger, {
             mode: 'range',
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (desktopToggleBtn) {
         desktopToggleBtn.addEventListener('click', function () {
             document.body.classList.toggle('sidebar-minimized');
-            
+
             // Toggle icon direction
             const icon = desktopToggleBtn.querySelector('i');
             if (icon) {
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     icon.className = 'bi bi-chevron-bar-left';
                 }
             }
-            
+
             // Trigger a window resize event so that charts (ApexCharts) redraw correctly
             setTimeout(() => {
                 window.dispatchEvent(new Event('resize'));

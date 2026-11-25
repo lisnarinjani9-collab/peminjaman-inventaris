@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\CekAdminGA;
+use App\Http\Middleware\CekKaryawan;
+use App\Http\Middleware\CekPetugasGudang;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,7 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'admin_ga' => CekAdminGA::class,
+            'petugas_gudang' => CekPetugasGudang::class,
+            'karyawan' => CekKaryawan::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

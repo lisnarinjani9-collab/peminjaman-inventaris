@@ -14,9 +14,6 @@ use App\Http\Controllers\admin_ga\AsetController as AdminAsetController;
 use App\Http\Controllers\admin_ga\KategoriController as AdminKategoriController;
 use App\Http\Controllers\admin_ga\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AuthController as LoginController;
-use App\Http\middleware\CekAdminGA;
-use App\Http\middleware\CekPetugasGudang;
-use App\Http\middleware\CekKaryawan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
