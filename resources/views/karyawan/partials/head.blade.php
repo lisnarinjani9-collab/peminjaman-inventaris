@@ -1,124 +1,33 @@
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Peminjaman Inventaris</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@yield('title', 'Beranda') - Peminjaman Inventaris</title>  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('asset/bootstrap-5.3.8-dist/css/bootstrap.min.css') }}" />
+  <!-- Favicons -->
+  <link href="{{ asset('template-karyawan/assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('template-karyawan/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- Bootstrap Icon -->
-    <link rel="stylesheet" href="{{ asset('asset/icons-1.13.1/font/bootstrap-icons.min.css') }}" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --ink: #12201c;
-            --teal: #0f766e;
-            --teal-dark: #0b5a54;
-            --soft: #f3f6f4;
-            --line: #d5ddd9;
-            --muted: #5f6f6a;
-        }
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('template-karyawan/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('template-karyawan/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('template-karyawan/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('template-karyawan/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('template-karyawan/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-        body {
-            font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-            color: var(--ink);
-        }
+  <!-- Main CSS File -->
+  <link href="{{ asset('template-karyawan/assets/css/main.css') }}" rel="stylesheet">
 
-        .login-wrapper {
-            min-height: 100vh;
-        }
-
-        /* panel kiri */
-        .brand-panel {
-            background: var(--soft);
-            position: relative;
-        }
-
-        /* pita kuning hitam di bagian atas */
-        .brand-panel::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 14px;
-            background: repeating-linear-gradient(-45deg, #ffd23f 0 14px, var(--ink) 14px 28px);
-        }
-
-        .brand-title {
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .point-icon {
-            width: 42px;
-            height: 42px;
-            flex-shrink: 0;
-            border-radius: 12px;
-            background: #fff;
-            border: 1.5px solid var(--ink);
-            color: var(--teal);
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* panel kanan */
-        .brand-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--teal);
-            color: #fff;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .form-control {
-            border: 1.5px solid var(--line);
-            border-radius: 10px;
-            padding: 0.75rem 0.9rem;
-        }
-
-        .form-control:focus {
-            border-color: var(--teal);
-            box-shadow: 0 0 0 0.25rem rgba(15, 118, 110, 0.18);
-        }
-
-        .password-box {
-            position: relative;
-        }
-
-        .password-box .form-control {
-            padding-right: 3rem;
-        }
-
-        #togglePassword {
-            position: absolute;
-            top: 50%;
-            right: 6px;
-            transform: translateY(-50%);
-            border: 0;
-            background: transparent;
-            color: var(--muted);
-            width: 40px;
-            height: 40px;
-        }
-
-        .btn-login {
-            background: var(--ink);
-            color: #fff;
-            border-radius: 10px;
-            padding: 0.8rem;
-            font-weight: 600;
-        }
-
-        .btn-login:hover {
-            background: var(--teal-dark);
-            color: #fff;
-        }
-    </style>
+  <!-- =======================================================
+  * Template Name: Arsha
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Updated: Nov 20 2026 with Bootstrap v5.3.9
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>

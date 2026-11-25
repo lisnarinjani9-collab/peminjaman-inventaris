@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\petugas_gudang\PengembalianController as PetugasPengembalianController;
 use App\Http\Controllers\petugas_gudang\SerahTerimaController as PetugasSerahTerimaController;
 use App\Http\Controllers\petugas_gudang\PengajuanController as PetugasPengajuanController;
 use App\Http\Controllers\karyawan\KatalogController as KaryawanKatalogController;
@@ -76,6 +77,13 @@ Route::prefix('petugas')->as('petugas.')->group(function () {
     Route::prefix('serah-terima')->group(function () {
         Route::get('/', [PetugasSerahTerimaController::class, 'index'])->name('serah_terima');
         Route::put('/update/{peminjaman}', [PetugasSerahTerimaController::class, 'update'])->name('serah_terima.update');
+    });
+     //pengembalian
+    Route::prefix('pengembalian')->group(function () {
+        Route::get('/', [PetugasPengembalianController::class, 'index'])->name('pengembalian');
+        Route::get('/update/{id}', [PetugasPengembalianController::class, 'edit'])->name('pengembalian.verifikasi');
+        Route::put('/update/{peminjaman}', [PetugasPengembalianController::class, 'update'])->name('pengembalian.update');
+        Route::get('/show/{id}', [PetugasPengembalianController::class, 'show'])->name('pengembalian.show');
     });
 });
 

@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Pengembalian">
+                    <a href="{{ route('petugas.pengembalian') }}" class="sidebar-menu-link {{ request()->routeIs('petugas.pengembalian*') ? 'active' : '' }}" title="Pengembalian">
                         <i class="bi bi-box-arrow-in-left"></i>
                         <span>Pengembalian</span>
                     </a>
