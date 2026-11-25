@@ -3,14 +3,17 @@
 @section('title', 'Kategori')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="page-title mb-0">Data Kategori</h4>
-    <a href="{{ route('admin.kategori.create') }}" class="btn btn-dark bi bi-plus"><span class="mx-1">Tambah Kategori</span></a>
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Data Kategori</h1>
+        <p class="page-subtitle">Kelola kategori untuk mengelompokkan aset sarana dan prasarana.</p>
+    </div>
+    <a href="{{ route('admin.kategori.create') }}" class="btn-custom btn-custom-primary"><i class="bi bi-plus-lg"></i> Tambah Kategori</a>
 </div>
 
-<div class="card-box">
+<div class="table-card-custom">
     <div class="table-responsive">
-        <table class="table table-striped table-hover mb-0">
+        <table class="table-custom">
             <thead>
                 <tr>
                     <th>No</th>
@@ -23,15 +26,17 @@
                 @forelse ($kategori as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->nama }}</td>
+                    <td class="table-product-name">{{ $item->nama }}</td>
                     <td>{{ $item->assets_count }}</td>
-                    <td class="d-flex justify-content-center gap-1">
-                        <a class="btn btn-sm btn-success bi bi-pencil-fill" href="{{ route('admin.kategori.edit', $item->id) }}" title="Ubah"></a>
-                        <form action="{{ route('admin.kategori.destroy', $item->id) }}" method="post" onsubmit="return confirm('Kategori beserta seluruh asetnya akan dihapus. Yakin?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger bi bi-trash-fill" title="Hapus"></button>
-                        </form>
+                    <td>
+                        <div class="d-flex justify-content-center gap-1">
+                            <a href="{{ route('admin.kategori.edit', $item->id) }}" class="table-btn-action" title="Ubah"><i class="bi bi-pencil"></i></a>
+                            <form action="{{ route('admin.kategori.destroy', $item->id) }}" method="post" onsubmit="return confirm('Kategori beserta seluruh asetnya akan dihapus. Yakin?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="table-btn-action delete" title="Hapus"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @empty

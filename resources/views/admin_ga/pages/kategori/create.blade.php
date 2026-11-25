@@ -3,21 +3,24 @@
 @section('title', 'Tambah Kategori')
 
 @section('content')
-<div class="col-md-8 col-lg-6 mx-auto">
-    <a class="btn btn-sm btn-dark bi bi-arrow-left mb-3" href="{{ route('admin.kategori') }}"><span class="mx-1">Kembali</span></a>
-
-    <div class="card-box">
-        <h4 class="page-title mb-3">Tambah Kategori</h4>
-
-        <form action="{{ route('admin.kategori.store') }}" method="post">
-            @csrf
-            <label class="form-label" for="nama">Nama Kategori</label>
-            <input class="form-control" type="text" name="nama" id="nama" value="{{ old('nama') }}" maxlength="100" required>
-
-            <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-dark w-50" type="submit">Tambah Kategori</button>
-            </div>
-        </form>
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Tambah Kategori</h1>
+        <p class="page-subtitle">Isi nama kategori yang baru.</p>
     </div>
+    <a href="{{ route('admin.kategori') }}" class="btn-custom btn-custom-light"><i class="bi bi-arrow-left"></i> Kembali</a>
+</div>
+
+<div class="card p-4 border-light shadow-sm col-lg-8">
+    <form action="{{ route('admin.kategori.store') }}" method="post">
+        @csrf
+
+        <div class="mb-4">
+            <label for="nama" class="form-label-custom">Nama Kategori</label>
+            <input type="text" class="form-control-custom" name="nama" id="nama" value="{{ old('nama') }}" maxlength="100" required>
+        </div>
+
+        <button type="submit" class="btn-custom btn-custom-primary"><i class="bi bi-check-lg"></i> Simpan</button>
+    </form>
 </div>
 @endsection

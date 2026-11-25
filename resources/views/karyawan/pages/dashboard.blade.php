@@ -175,11 +175,6 @@
     <!-- FAQ Section -->
     <section id="faq" class="faq-2 section light-background">
 
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Pertanyaan Umum</h2>
-        <p>Hal-hal yang sering ditanyakan seputar peminjaman inventaris</p>
-      </div>
-
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10">

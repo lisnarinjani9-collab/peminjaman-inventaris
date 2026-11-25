@@ -11,7 +11,6 @@
           <li><a href="{{ route('karyawan.dashboard') }}#about">Tentang</a></li>
           <li><a href="{{ route('karyawan.dashboard') }}#kategori">Kategori</a></li>
           <li><a href="{{ route('karyawan.dashboard') }}#alur">Alur</a></li>
-          <li><a href="{{ route('karyawan.dashboard') }}#faq">FAQ</a></li>
           <li><a href="{{ route('karyawan.katalog') }}" class="{{ request()->routeIs('karyawan.katalog') ? 'active' : '' }}">Katalog</a></li>
           <li><a href="{{ route('karyawan.peminjaman') }}" class="{{ request()->routeIs('karyawan.peminjaman*') ? 'active' : '' }}">Peminjaman Saya</a></li>
           @auth
