@@ -14,6 +14,7 @@ class Asset extends Model
     protected $fillable = [
         'kategori_id',
         'nama',
+        'gambar',
         'stok_awal',
         'stok_tersedia',
         'kondisi',

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kategori_id')->constrained('categories')->cascadeOnDelete();
             $table->string('nama', 150);
+            $table->string('gambar', 255)->nullable();
             $table->unsignedInteger('stok_awal');
             $table->unsignedInteger('stok_tersedia');
             $table->enum('kondisi', ['baik', 'rusak_ringan', 'rusak_berat'])->default('baik');

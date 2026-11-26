@@ -12,7 +12,7 @@
 </div>
 
 <div class="card p-4 border-light shadow-sm col-lg-8">
-    <form action="{{ route('admin.aset.store') }}" method="post">
+    <form action="{{ route('admin.aset.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -28,6 +28,12 @@
         <div class="mb-3">
             <label for="nama" class="form-label-custom">Nama Aset</label>
             <input type="text" class="form-control-custom" name="nama" id="nama" value="{{ old('nama') }}" maxlength="150" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="gambar" class="form-label-custom">Gambar Aset</label>
+            <input type="file" class="form-control-custom" name="gambar" id="gambar" accept=".jpg,.jpeg,.png" required>
+            <small class="text-muted">Format JPG atau PNG</small>
         </div>
 
         <div class="mb-3">

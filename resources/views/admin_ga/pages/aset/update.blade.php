@@ -12,7 +12,7 @@
 </div>
 
 <div class="card p-4 border-light shadow-sm col-lg-8">
-    <form action="{{ route('admin.aset.update', $aset->id) }}" method="post">
+    <form action="{{ route('admin.aset.update', $aset->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -28,6 +28,20 @@
         <div class="mb-3">
             <label for="nama" class="form-label-custom">Nama Aset</label>
             <input type="text" class="form-control-custom" name="nama" id="nama" value="{{ old('nama', $aset->nama) }}" maxlength="150" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="gambar" class="form-label-custom">Gambar Aset</label>
+
+            @if ($aset->gambar)
+            <div class="mb-2">
+                <img src="{{ asset('storage/' . $aset->gambar) }}" alt="{{ $aset->nama }}"
+                    style="width: 160px; height: 160px; object-fit: cover; border-radius: 12px;">
+            </div>
+            @endif
+
+            <input type="file" class="form-control-custom" name="gambar" id="gambar" accept=".jpg,.jpeg,.png">
+            <small class="text-muted">Kosongkan jika tidak ingin mengganti gambar. Format JPG atau PNG, maksimal 2 MB.</small>
         </div>
 
         <div class="mb-3">
