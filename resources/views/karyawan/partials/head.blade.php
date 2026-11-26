@@ -1,7 +1,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>@yield('title', 'Beranda') - Peminjaman Inventaris</title>  <meta name="description" content="">
+    <title>@yield('title', 'Beranda') - Peminjaman Inventaris</title>
+  <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
@@ -30,4 +31,25 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <!-- Warna tombol Bootstrap disamakan dengan warna tema -->
+  <style>
+    .btn-primary {
+      --bs-btn-bg: var(--accent-color);
+      --bs-btn-border-color: var(--accent-color);
+      --bs-btn-hover-bg: #2f9fd6;
+      --bs-btn-hover-border-color: #2f9fd6;
+      --bs-btn-active-bg: #2f9fd6;
+      --bs-btn-active-border-color: #2f9fd6;
+    }
+
+    .btn-outline-primary {
+      --bs-btn-color: var(--accent-color);
+      --bs-btn-border-color: var(--accent-color);
+      --bs-btn-hover-bg: var(--accent-color);
+      --bs-btn-hover-border-color: var(--accent-color);
+      --bs-btn-active-bg: var(--accent-color);
+      --bs-btn-active-border-color: var(--accent-color);
+    }
+  </style>
 </head>

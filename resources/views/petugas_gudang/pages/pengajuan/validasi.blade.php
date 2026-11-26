@@ -57,11 +57,11 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label-custom" for="status">Keputusan</label>
-            <select class="form-select-custom" name="status" id="status" required>
+            <label class="form-label-custom" for="keputusan">Keputusan</label>
+            <select class="form-select-custom" name="keputusan" id="keputusan" required>
                 <option value="" disabled selected>Pilih keputusan</option>
-                <option value="disetujui">Disetujui</option>
-                <option value="ditolak">Ditolak</option>
+                <option value="setuju">Disetujui</option>
+                <option value="tolak">Ditolak</option>
             </select>
         </div>
 
