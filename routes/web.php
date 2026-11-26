@@ -26,12 +26,6 @@ Route::prefix('login')->group(function () {
     Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
 });
 
-// daftar akun karyawan
-Route::prefix('register')->group(function () {
-    Route::get('/', [LoginController::class, 'register'])->name('register');
-    Route::post('/', [LoginController::class, 'registerStore'])->name('register.store');
-});
-
 // logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -72,6 +66,7 @@ Route::prefix('admin')->as('admin.')->middleware('admin_ga')->group(function () 
     });
     //laporan
     Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('laporan');
+        Route::get('/laporan/cetak', [AdminLaporanController::class, 'cetak'])->name('laporan.cetak');
 });
 
 // petugas gudang

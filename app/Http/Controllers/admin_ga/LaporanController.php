@@ -8,29 +8,9 @@ use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $request->validate([
-            'dari' => 'nullable|date',
-            'sampai' => 'nullable|date|after_or_equal:dari',
-            'status' => 'nullable|in:pending,disetujui,dipinjam,dikembalikan,ditolak',
-        ]);
-
-        $query = Borrowing::with('karyawan', 'details.asset', 'returnLog');
-
-        if ($request->dari) {
-            $query->whereDate('tanggal_pinjam', '>=', $request->dari);
-        }
-
-        if ($request->sampai) {
-            $query->whereDate('tanggal_pinjam', '<=', $request->sampai);
-        }
-
-        if ($request->status) {
-            $query->where('status', $request->status);
-        }
-
-        $laporan = $query->latest()->get();
+        $laporan = Borrowing::with('karyawan', 'details.asset', 'returnLog')->latest()->get();
 
         $total = $laporan->count();
         $dipinjam = $laporan->where('status', 'dipinjam')->count();
@@ -38,5 +18,19 @@ class LaporanController extends Controller
         $ditolak = $laporan->where('status', 'ditolak')->count();
 
         return view('admin_ga.pages.laporan.laporan', compact('laporan', 'total', 'dipinjam', 'dikembalikan', 'ditolak'));
+    }
+
+    public function cetak()
+    {
+        $laporan = Borrowing::with('karyawan', 'details.asset', 'returnLog')->latest()->get();
+
+        $total = $laporan->count();
+        $dipinjam = $laporan->where('status', 'dipinjam')->count();
+        $dikembalikan = $laporan->where('status', 'dikembalikan')->count();
+        $ditolak = $laporan->where('status', 'ditolak')->count();
+
+        $tanggalCetak = now()->locale('id')->translatedFormat('d F Y, H:i') . ' WIB';
+
+        return view('admin_ga.pages.laporan.cetak', compact('laporan', 'total', 'dipinjam', 'dikembalikan', 'ditolak', 'tanggalCetak'));
     }
 }

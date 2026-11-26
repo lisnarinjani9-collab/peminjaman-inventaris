@@ -114,8 +114,6 @@
 
                     <button type="submit" class="btn-auth">Masuk <i class="bi bi-arrow-right"></i></button>
                 </form>
-
-                <p class="auth-switch">Karyawan belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
             </div>
         </div>
 

@@ -35,7 +35,7 @@
                 <li class="sidebar-menu-item">
                     <a href="{{ route('admin.akun') }}" class="sidebar-menu-link {{ request()->routeIs('admin.akun*') ? 'active' : '' }}" title="Akun Petugas">
                         <i class="bi bi-people-fill"></i>
-                        <span>Akun Petugas</span>
+                        <span>Akun</span>
                     </a>
                 </li>
             </ul>

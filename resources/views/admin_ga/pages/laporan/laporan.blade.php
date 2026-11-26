@@ -4,77 +4,149 @@
 
 @section('content')
 <style>
-    @media print {
-        .sidebar-wrapper, .navbar-custom, .no-print, .footer-custom, footer { display: none !important; }
-        .main-wrapper { margin: 0 !important; padding: 0 !important; }
-        .table-card-custom, .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+    .laporan-judul {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .laporan-judul-icon {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        background: var(--brand-forest-dark);
+        color: var(--brand-lime);
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stat-isi {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .stat-isi .stat-value {
+        margin-bottom: 0;
+    }
+
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stat-icon.biru {
+        background: #e6eefb;
+        color: #1f3f73;
+    }
+
+    .stat-icon.kuning {
+        background: #fff3cf;
+        color: #b78103;
+    }
+
+    .stat-icon.hijau {
+        background: #dcfce7;
+        color: #16a34a;
+    }
+
+    .stat-icon.merah {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .tabel-judul {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 24px 24px 12px;
+    }
+
+    .tabel-judul h5 {
+        font-weight: 800;
+        margin-bottom: 4px;
+    }
+
+    .pill-label {
+        border: 1px solid var(--border-light);
+        border-radius: 999px;
+        padding: 6px 16px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
     }
 </style>
 
 <div class="page-header">
-    <div>
-        <h1 class="page-title">Laporan Peminjaman</h1>
-        <p class="page-subtitle">Rekap seluruh peminjaman aset. Gunakan filter untuk mempersempit data.</p>
+    <div class="laporan-judul">
+        <div class="laporan-judul-icon"><i class="bi bi-file-earmark-bar-graph"></i></div>
+        <div>
+            <h1 class="page-title">Laporan Peminjaman</h1>
+            <p class="page-subtitle">Rekap seluruh peminjaman aset beserta status dan kondisi pengembaliannya.</p>
+        </div>
     </div>
-    <button type="button" onclick="window.print()" class="btn-custom btn-custom-primary no-print"><i class="bi bi-printer"></i> Cetak</button>
-</div>
-
-<div class="card p-4 border-light shadow-sm mb-4 no-print">
-    <form action="{{ route('admin.laporan') }}" method="get" class="row g-3 align-items-end">
-        <div class="col-md-3">
-            <label for="dari" class="form-label-custom">Dari Tanggal</label>
-            <input type="date" class="form-control-custom" name="dari" id="dari" value="{{ request('dari') }}">
-        </div>
-        <div class="col-md-3">
-            <label for="sampai" class="form-label-custom">Sampai Tanggal</label>
-            <input type="date" class="form-control-custom" name="sampai" id="sampai" value="{{ request('sampai') }}">
-        </div>
-        <div class="col-md-3">
-            <label for="status" class="form-label-custom">Status</label>
-            <select class="form-select-custom" name="status" id="status">
-                <option value="">Semua status</option>
-                <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu</option>
-                <option value="disetujui" {{ request('status') == 'disetujui' ? 'selected' : '' }}>Disetujui</option>
-                <option value="dipinjam" {{ request('status') == 'dipinjam' ? 'selected' : '' }}>Dipinjam</option>
-                <option value="dikembalikan" {{ request('status') == 'dikembalikan' ? 'selected' : '' }}>Dikembalikan</option>
-                <option value="ditolak" {{ request('status') == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
-            </select>
-        </div>
-        <div class="col-md-3 d-flex gap-2">
-            <button type="submit" class="btn-custom btn-custom-primary"><i class="bi bi-funnel"></i> Terapkan</button>
-            <a href="{{ route('admin.laporan') }}" class="btn-custom btn-custom-light">Reset</a>
-        </div>
-    </form>
+    <a href="{{ route('admin.laporan.cetak') }}" class="btn-custom btn-custom-primary"><i class="bi bi-printer"></i> Cetak Laporan</a>
 </div>
 
 <div class="row g-3 mb-4">
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-xl-3">
         <div class="card p-4 border-light shadow-sm card-stat">
             <div class="stat-label">Total Peminjaman</div>
-            <div class="stat-value">{{ $total }}</div>
+            <div class="stat-isi">
+                <div class="stat-value">{{ $total }}</div>
+                <div class="stat-icon biru"><i class="bi bi-clipboard-data"></i></div>
+            </div>
         </div>
     </div>
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-xl-3">
         <div class="card p-4 border-light shadow-sm card-stat">
             <div class="stat-label">Sedang Dipinjam</div>
-            <div class="stat-value">{{ $dipinjam }}</div>
+            <div class="stat-isi">
+                <div class="stat-value">{{ $dipinjam }}</div>
+                <div class="stat-icon kuning"><i class="bi bi-box-arrow-up-right"></i></div>
+            </div>
         </div>
     </div>
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-xl-3">
         <div class="card p-4 border-light shadow-sm card-stat">
             <div class="stat-label">Dikembalikan</div>
-            <div class="stat-value">{{ $dikembalikan }}</div>
+            <div class="stat-isi">
+                <div class="stat-value">{{ $dikembalikan }}</div>
+                <div class="stat-icon hijau"><i class="bi bi-check-circle"></i></div>
+            </div>
         </div>
     </div>
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-xl-3">
         <div class="card p-4 border-light shadow-sm card-stat">
             <div class="stat-label">Ditolak</div>
-            <div class="stat-value">{{ $ditolak }}</div>
+            <div class="stat-isi">
+                <div class="stat-value">{{ $ditolak }}</div>
+                <div class="stat-icon merah"><i class="bi bi-x-circle"></i></div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="table-card-custom">
+    <div class="tabel-judul">
+        <div>
+            <h5>Daftar Peminjaman</h5>
+            <div class="text-muted">Rekapitulasi data karyawan, aset, dan status peminjaman</div>
+        </div>
+        <span class="pill-label">Data Laporan</span>
+    </div>
+
     <div class="table-responsive">
         <table class="table-custom">
             <thead>

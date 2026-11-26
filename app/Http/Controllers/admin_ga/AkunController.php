@@ -11,8 +11,10 @@ class AkunController extends Controller
 {
     public function index()
     {
-        $akun = User::where('role', 'petugas_gudang')->get();
+
+        $akun = User::whereIn('role', ['petugas_gudang', 'karyawan'])->orderBy('role')->get();
         return view('admin_ga.pages.akun.akun', compact('akun'));
+
     }
 
     public function create()
@@ -25,22 +27,28 @@ class AkunController extends Controller
         $request->validate([
             'nama' => 'required|string|max:100',
             'email' => 'required|email|max:100|unique:users,email',
+            'divisi' => 'required|string|max:100',
+            'role' => 'required|in:petugas_gudang,karyawan',
             'password' => 'required|min:8|max:255|confirmed',
         ]);
 
         User::create([
             'nama' => $request->nama,
             'email' => $request->email,
+            'divisi' => $request->divisi,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
-            'role' => 'petugas_gudang',
-            'divisi' => 'Gudang',
         ]);
 
-        return redirect()->route('admin.akun')->with('success', 'Akun petugas gudang berhasil dibuat');
+        return redirect()->route('admin.akun')->with('success', 'Akun berhasil dibuat');
     }
-
+    
     public function destroy(User $akun)
     {
+        if ($akun->role == 'admin_ga') {
+            abort(404);
+        }
+
         $akun->delete();
         return redirect()->route('admin.akun')->with('success', 'Akun berhasil dihapus');
     }

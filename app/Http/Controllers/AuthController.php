@@ -68,30 +68,4 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Anda berhasil logout.');
     }
-
-    // buat karyawan register
-    public function register()
-    {
-        return view('register');
-    }
-
-    public function registerStore(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:100',
-            'email' => 'required|email|max:100|unique:users,email',
-            'divisi' => 'required|string|max:100',
-            'password' => 'required|min:8|max:255|confirmed',
-        ]);
-
-        User::create([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'divisi' => $request->divisi,
-            'password' => Hash::make($request->password),
-            'role' => 'karyawan',
-        ]);
-
-        return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silahkan login');
-    }
 }
