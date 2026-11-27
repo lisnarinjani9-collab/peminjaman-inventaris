@@ -13,6 +13,6 @@ class KatalogController extends Controller
     {
         $aset = Asset::with('category')->where('stok_tersedia', '>', 0)->get();
         $kategori = Category::all();
-        return view('karyawan.pages.katalog', compact('aset', 'kategori'));
+        return view('karyawan.pages.katalog.katalog', compact('aset', 'kategori'));
     }
 }

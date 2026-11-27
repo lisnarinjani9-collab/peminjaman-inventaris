@@ -5,9 +5,9 @@
 @section('content')
 
     <!-- Judul halaman -->
-    <section class="page-title dark-background" style="padding: 110px 0 40px;">
+    <section class="section dark-background" style="padding: 110px 0 40px;">
       <div class="container">
-        <h1>Katalog Aset</h1>
+        <h1 style="font-size: 32px; font-weight: 700;">Katalog Aset</h1>
         <p class="mb-0">Pilih aset yang ingin kamu pinjam. Hanya aset dengan stok tersedia yang ditampilkan.</p>
       </div>
     </section>
