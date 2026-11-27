@@ -48,41 +48,40 @@
 
                 <div id="daftar-baris">
                   @foreach ($barisAset as $i => $dipilih)
-                  <div class="baris-aset border rounded-3 p-3 mb-3">
-                    <div class="row g-3 align-items-center">
-                      <div class="col-auto">
-                        <img class="foto-aset" alt="" style="width: 64px; height: 64px; object-fit: cover; border-radius: 10px; background: #e9eef5;">
-                      </div>
-                      <div class="col">
-                        <select name="aset_id[]" class="form-select pilih-aset" required>
-                          <option value="">Pilih aset</option>
-                          @foreach ($aset as $item)
-                          <option value="{{ $item->id }}"
-                            data-stok="{{ $item->stok_tersedia }}"
-                            data-tinggi="{{ $item->bernilai_tinggi }}"
-                            data-gambar="{{ $item->gambar ? asset('storage/' . $item->gambar) : '' }}"
-                            {{ $dipilih == $item->id ? 'selected' : '' }}>
-                            {{ $item->nama }} (stok {{ $item->stok_tersedia }})
-                          </option>
-                          @endforeach
-                        </select>
-                        <small class="text-muted info-aset d-block mt-1"></small>
-                      </div>
-                      <div class="col-5 col-md-2">
-                        <input type="number" name="jumlah[]" class="form-control jumlah" min="1"
-                          value="{{ $barisJumlah[$i] ?? 1 }}" placeholder="Jumlah" required>
-                      </div>
-                      <div class="col-auto">
-                        <button type="button" class="btn btn-outline-danger btn-sm hapus-baris" title="Hapus aset ini"><i class="bi bi-trash"></i></button>
-                      </div>
+                  <div class="baris-aset">
+                    <img class="foto-aset" alt="">
+
+                    <div class="kolom-aset">
+                      <label class="form-label fw-semibold">Aset</label>
+                      <select name="aset_id[]" class="form-select pilih-aset" required>
+                        <option value="">Pilih aset</option>
+                        @foreach ($aset as $item)
+                        <option value="{{ $item->id }}"
+                          data-stok="{{ $item->stok_tersedia }}"
+                          data-tinggi="{{ $item->bernilai_tinggi }}"
+                          data-gambar="{{ $item->gambar ? asset('storage/' . $item->gambar) : '' }}"
+                          {{ $dipilih == $item->id ? 'selected' : '' }}>
+                          {{ $item->nama }} (stok {{ $item->stok_tersedia }})
+                        </option>
+                        @endforeach
+                      </select>
+                      <small class="text-muted info-aset d-block mt-1"></small>
                     </div>
+
+                    <div class="kolom-jumlah">
+                      <label class="form-label fw-semibold">Jumlah</label>
+                      <input type="number" name="jumlah[]" class="form-control jumlah" min="1"
+                        value="{{ $barisJumlah[$i] ?? 1 }}" required>
+                    </div>
+
+                    <button type="button" class="btn btn-outline-danger hapus-baris" title="Hapus aset ini"><i class="bi bi-trash"></i></button>
                   </div>
                   @endforeach
                 </div>
 
                 <button type="button" id="tambah-baris" class="btn btn-outline-primary btn-sm rounded-pill"><i class="bi bi-plus-lg"></i> Tambah Aset</button>
 
-                <div class="d-flex justify-content-end gap-2 mt-4">
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-4 border-top">
                   <a href="{{ route('karyawan.katalog') }}" class="btn btn-light rounded-pill px-4">Batal</a>
                   <button type="submit" class="btn btn-primary rounded-pill px-4">Kirim Pengajuan</button>
                 </div>
@@ -94,6 +93,61 @@
 
       </div>
     </section>
+
+    <style>
+      /* satu baris aset: foto | aset | jumlah | hapus, semua rata atas */
+      .baris-aset {
+        display: grid;
+        grid-template-columns: 64px 1fr 110px 40px;
+        gap: 16px;
+        align-items: start;
+        padding: 16px;
+        margin-bottom: 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        background: #f8f9fb;
+      }
+
+      /* foto dan tombol hapus diturunkan setinggi label supaya sejajar dengan kolom isian */
+      .foto-aset {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 10px;
+        background: #e9eef5;
+        margin-top: 30px;
+      }
+
+      .hapus-baris {
+        margin-top: 30px;
+        height: 38px;
+        padding: 0;
+      }
+
+      .baris-aset .form-label {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      /* layar kecil: foto + aset di atas, jumlah + hapus di bawah */
+      @media (max-width: 575px) {
+        .baris-aset {
+          grid-template-columns: 56px 1fr;
+        }
+        .foto-aset {
+          width: 56px;
+          height: 56px;
+        }
+        .kolom-jumlah {
+          grid-column: 1 / 2;
+        }
+        .hapus-baris {
+          grid-column: 2 / 3;
+          justify-self: end;
+          width: 40px;
+        }
+      }
+    </style>
 
     <script>
       const daftar = document.getElementById('daftar-baris');

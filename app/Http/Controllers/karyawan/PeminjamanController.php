@@ -34,9 +34,9 @@ class PeminjamanController extends Controller
             'jumlah.*' => 'required|integer|min:1',
         ]);
 
-        // cek jumlah yang diminta tidak melebihi stok tersedia
+
         foreach ($request->aset_id as $i => $id) {
-            $aset = Asset::findOrFail($id);
+            $aset = Asset::findOrFail($id);  // findOrFail buat nyari data id
             if ($request->jumlah[$i] > $aset->stok_tersedia) {
                 return back()->withInput()->with('error', 'Jumlah ' . $aset->nama . ' melebihi stok yang tersedia');
             }
@@ -65,7 +65,7 @@ class PeminjamanController extends Controller
         if ($peminjaman->karyawan_id != Auth::id()) {
             abort(403);
         }
-        $peminjaman->load('details.asset');
+        $peminjaman->load('details.asset', 'returnLog.petugas');
         return view('karyawan.pages.peminjaman.show', compact('peminjaman'));
     }
 }
