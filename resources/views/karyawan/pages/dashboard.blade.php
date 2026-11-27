@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{ asset('template-karyawan/assets/img/hero-img.png') }}" class="img-fluid animated" alt="Peminjaman inventaris">
+            <img src="{{ asset('template-karyawan/assets/img/hero-inventaris.svg') }}" class="img-fluid animated" alt="Peminjaman inventaris">
           </div>
         </div>
       </div>
@@ -105,126 +105,97 @@
 
     </section><!-- /Kategori Section -->
 
-    <!-- Portfolio Section -->
+    <!-- Galeri Aset Section -->
     <section id="portfolio" class="portfolio section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+        <h2>Galeri Aset</h2>
+        <p>Foto aset yang bisa kamu pinjam, dikelompokkan per kategori</p>
+      </div>
 
       <div class="container">
 
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        @if ($aset->count() > 0)
+        <div class="isotope-layout" data-default-filter="*" data-layout="fitRows" data-sort="original-order">
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li>
-          </ul><!-- End Portfolio Filters -->
+            <li data-filter="*" class="filter-active">Semua</li>
+            @foreach ($kategori as $item)
+            <li data-filter=".filter-kategori-{{ $item->id }}">{{ $item->nama }}</li>
+            @endforeach
+          </ul>
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/portfolio-portrait-1.webp" class="img-fluid" alt="">
+            @foreach ($aset as $item)
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-kategori-{{ $item->kategori_id }}">
+              <img src="{{ asset('storage/' . $item->gambar) }}" class="img-fluid" alt="{{ $item->nama }}"
+                style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover;">
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-portrait-1.webp" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <h4>{{ $item->nama }}</h4>
+                <p>{{ $item->category->nama }} &middot; Stok {{ $item->stok_tersedia }}</p>
+                <a href="{{ asset('storage/' . $item->gambar) }}" title="{{ $item->nama }}" data-gallery="galeri-aset" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{ route('karyawan.peminjaman.create', ['aset' => $item->id]) }}" title="Ajukan pinjam" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/portfolio/portfolio-1.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-1.webp" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/portfolio/portfolio-3.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-3.webp" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/portfolio-4.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-4.webp" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/portfolio/portfolio-portrait-2.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-portrait-2.webp" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/portfolio/portfolio-portrait-3.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-portrait-3.webp" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="assets/img/portfolio/portfolio-7.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-7.webp" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/portfolio/portfolio-8.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-8.webp" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="assets/img/portfolio/portfolio-9.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/portfolio/portfolio-9.webp" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
+            </div>
+            @endforeach
+          </div>
 
         </div>
+        @else
+        <p class="text-center text-muted mb-0">Belum ada foto aset yang tersedia.</p>
+        @endif
 
       </div>
 
-    </section><!-- /Portfolio Section -->
+    </section><!-- /Galeri Aset Section -->
 
+    <!-- Cara Meminjam Section -->
+    <section id="cara" class="services section light-background">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Cara Meminjam</h2>
+        <p>Empat langkah dari pengajuan sampai pengembalian</p>
+      </div>
+
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-1-circle icon"></i></div>
+              <h4>Pilih Aset</h4>
+              <p>Buka Katalog atau Galeri Aset, lalu pilih aset yang stoknya masih tersedia.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-2-circle icon"></i></div>
+              <h4>Ajukan Peminjaman</h4>
+              <p>Klik Ajukan Peminjaman, isi tanggal pinjam dan tanggal kembali, pilih aset beserta jumlahnya, lalu kirim.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-3-circle icon"></i></div>
+              <h4>Tunggu Persetujuan</h4>
+              <p>Petugas Gudang memeriksa pengajuanmu. Aset bernilai tinggi disetujui Admin GA. Pantau di menu Peminjaman Saya.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-4-circle icon"></i></div>
+              <h4>Ambil dan Kembalikan</h4>
+              <p>Ambil aset dari petugas setelah disetujui, lalu kembalikan sebelum tanggal kembali. Kondisinya akan dicatat.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Cara Meminjam Section -->
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 

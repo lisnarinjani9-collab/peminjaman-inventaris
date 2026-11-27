@@ -37,10 +37,10 @@
     .btn-primary {
       --bs-btn-bg: var(--accent-color);
       --bs-btn-border-color: var(--accent-color);
-      --bs-btn-hover-bg: #2f9fd6;
-      --bs-btn-hover-border-color: #2f9fd6;
-      --bs-btn-active-bg: #2f9fd6;
-      --bs-btn-active-border-color: #2f9fd6;
+      --bs-btn-hover-bg: #12294d;
+      --bs-btn-hover-border-color: #12294d;
+      --bs-btn-active-bg: #12294d;
+      --bs-btn-active-border-color: #12294d;
     }
 
     .btn-outline-primary {

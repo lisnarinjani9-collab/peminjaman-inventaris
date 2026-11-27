@@ -10,7 +10,8 @@
           <li><a href="{{ route('karyawan.dashboard') }}#hero" class="{{ request()->routeIs('karyawan.dashboard') ? 'active' : '' }}">Beranda</a></li>
           <li><a href="{{ route('karyawan.dashboard') }}#about">Tentang</a></li>
           <li><a href="{{ route('karyawan.dashboard') }}#kategori">Kategori</a></li>
-          <li><a href="{{ route('karyawan.dashboard') }}#alur">Portfolio</a></li>
+          <li><a href="{{ route('karyawan.dashboard') }}#portfolio">Galeri</a></li>
+          <li><a href="{{ route('karyawan.dashboard') }}#cara">Cara Pinjam</a></li>
           <li><a href="{{ route('karyawan.katalog') }}" class="{{ request()->routeIs('karyawan.katalog') ? 'active' : '' }}">Katalog</a></li>
           <li><a href="{{ route('karyawan.peminjaman') }}" class="{{ request()->routeIs('karyawan.peminjaman*') ? 'active' : '' }}">Peminjaman Saya</a></li>
           @auth
@@ -31,7 +32,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="{{ route('karyawan.peminjaman.create') }}">Ajukan Peminjaman</a>
+      <a class="btn-getstarted" href="{{ route('karyawan.peminjaman.create') }}" style="white-space: nowrap;">Ajukan Pinjam</a>
 
     </div>
   </header>
