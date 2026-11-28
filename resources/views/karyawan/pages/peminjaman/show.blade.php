@@ -27,9 +27,9 @@
                 @if ($peminjaman->status == 'pending')
                 <span class="badge text-bg-warning fs-6">Menunggu</span>
                 @elseif ($peminjaman->status == 'disetujui')
-                <span class="badge text-bg-info fs-6">Disetujui</span>
+                <span class="badge fs-6" style="background: #b45309; color: #ffffff;">Disetujui</span>
                 @elseif ($peminjaman->status == 'dipinjam')
-                <span class="badge text-bg-primary fs-6">Dipinjam</span>
+                <span class="badge fs-6" style="background: #5a402b; color: #ffffff;">Dipinjam</span>
                 @elseif ($peminjaman->status == 'dikembalikan')
                 <span class="badge text-bg-success fs-6">Dikembalikan</span>
                 @else
@@ -97,7 +97,7 @@
                   style="width: 56px; height: 56px; object-fit: cover; border-radius: 10px;">
                 @else
                 <div class="d-flex align-items-center justify-content-center text-muted"
-                  style="width: 56px; height: 56px; border-radius: 10px; background: #e9eef5;">
+                  style="width: 56px; height: 56px; border-radius: 10px; background: #f3ece1;">
                   <i class="bi bi-image"></i>
                 </div>
                 @endif

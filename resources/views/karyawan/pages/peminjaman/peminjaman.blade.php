@@ -11,7 +11,7 @@
           <h1 style="font-size: 32px; font-weight: 700;">Peminjaman Saya</h1>
           <p class="mb-0">Pantau status pengajuan dan riwayat peminjamanmu di sini.</p>
         </div>
-        <a href="{{ route('karyawan.peminjaman.create') }}" class="btn rounded-pill px-4" style="background: #f5b301; color: #0b1b33; font-weight: 600; white-space: nowrap;">Ajukan Peminjaman</a>
+        <a href="{{ route('karyawan.peminjaman.create') }}" class="btn rounded-pill px-4" style="background: #f59e0b; color: #2b1d14; font-weight: 600; white-space: nowrap;">Ajukan Peminjaman</a>
       </div>
     </section>
 
@@ -33,9 +33,9 @@
               @if ($item->status == 'pending')
               <span class="badge text-bg-warning fs-6">Menunggu</span>
               @elseif ($item->status == 'disetujui')
-              <span class="badge text-bg-info fs-6">Disetujui</span>
+              <span class="badge fs-6" style="background: #b45309; color: #ffffff;">Disetujui</span>
               @elseif ($item->status == 'dipinjam')
-              <span class="badge text-bg-primary fs-6">Dipinjam</span>
+              <span class="badge fs-6" style="background: #5a402b; color: #ffffff;">Dipinjam</span>
               @elseif ($item->status == 'dikembalikan')
               <span class="badge text-bg-success fs-6">Dikembalikan</span>
               @else
@@ -52,7 +52,7 @@
                     style="width: 48px; height: 48px; object-fit: cover; border-radius: 10px;">
                   @else
                   <div class="d-flex align-items-center justify-content-center text-muted"
-                    style="width: 48px; height: 48px; border-radius: 10px; background: #e9eef5;">
+                    style="width: 48px; height: 48px; border-radius: 10px; background: #f3ece1;">
                     <i class="bi bi-image"></i>
                   </div>
                   @endif

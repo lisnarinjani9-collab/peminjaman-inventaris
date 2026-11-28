@@ -37,10 +37,10 @@
     .btn-primary {
       --bs-btn-bg: var(--accent-color);
       --bs-btn-border-color: var(--accent-color);
-      --bs-btn-hover-bg: #12294d;
-      --bs-btn-hover-border-color: #12294d;
-      --bs-btn-active-bg: #12294d;
-      --bs-btn-active-border-color: #12294d;
+      --bs-btn-hover-bg: #92400e;
+      --bs-btn-hover-border-color: #92400e;
+      --bs-btn-active-bg: #92400e;
+      --bs-btn-active-border-color: #92400e;
     }
 
     .btn-outline-primary {
@@ -51,5 +51,14 @@
       --bs-btn-active-bg: var(--accent-color);
       --bs-btn-active-border-color: var(--accent-color);
     }
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
   </style>
 </head>

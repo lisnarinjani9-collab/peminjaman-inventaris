@@ -199,8 +199,6 @@
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-      <img src="{{ asset('template-karyawan/assets/img/bg/bg-8.webp') }}" alt="">
-
       <div class="container">
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-xl-9 text-center text-xl-start">

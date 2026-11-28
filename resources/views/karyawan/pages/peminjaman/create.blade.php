@@ -103,9 +103,9 @@
         align-items: start;
         padding: 16px;
         margin-bottom: 12px;
-        border: 1px solid #dee2e6;
+        border: 1px solid #e6dccd;
         border-radius: 12px;
-        background: #f8f9fb;
+        background: #fbf8f3;
       }
 
       /* foto dan tombol hapus diturunkan setinggi label supaya sejajar dengan kolom isian */
@@ -114,7 +114,7 @@
         height: 64px;
         object-fit: cover;
         border-radius: 10px;
-        background: #e9eef5;
+        background: #f3ece1;
         margin-top: 30px;
       }
 

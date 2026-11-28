@@ -40,7 +40,7 @@
                 style="width: 100%; height: 190px; object-fit: cover;">
               @else
               <div class="d-flex align-items-center justify-content-center text-muted"
-                style="width: 100%; height: 190px; background: #e9eef5; font-size: 40px;">
+                style="width: 100%; height: 190px; background: #f3ece1; font-size: 40px;">
                 <i class="bi bi-image"></i>
               </div>
               @endif

@@ -38,7 +38,7 @@
 
         <div class="mb-3">
             <label for="stok_awal" class="form-label-custom">Stok Awal</label>
-            <input type="number" class="form-control-custom" name="stok_awal" id="stok_awal" value="{{ old('stok_awal') }}" min="0" required>
+            <input type="number" class="form-control-custom" name="stok_awal" id="stok_awal" value="{{ old('stok_awal') }}" min="1" required>
         </div>
 
         <div class="mb-3">

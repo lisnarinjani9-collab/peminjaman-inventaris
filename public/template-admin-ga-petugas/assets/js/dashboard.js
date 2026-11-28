@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 fontFamily: 'Plus Jakarta Sans, sans-serif'
             },
-            colors: ['#12294d', '#f5b301'], // Dark Green (Income), Lime Green (Expenses)
+            colors: ['#3b2819', '#f59e0b'], // Dark Green (Income), Lime Green (Expenses)
             states: {
                 hover: {
                     filter: {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 show: false // Custom legends are drawn statically in HTML to match reference layout
             },
             grid: {
-                borderColor: '#e6ebf2',
+                borderColor: '#ebe2d4',
                 strokeDashArray: 4,
                 yaxis: {
                     lines: {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                 labels: {
                     style: {
-                        colors: '#64748b',
+                        colors: '#7a6a5c',
                         fontSize: '11px',
                         fontWeight: 500
                     }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fontFamily: 'Plus Jakarta Sans, sans-serif'
             },
             labels: ['View Count', 'Percentage', 'Sales'],
-            colors: ['#f5b301', '#0b1b33', '#F97316'], // Lime, Forest Dark, Orange
+            colors: ['#f59e0b', '#2b1d14', '#F97316'], // Lime, Forest Dark, Orange
             states: {
                 hover: {
                     filter: {
@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                 show: true,
                                 fontSize: '12px',
                                 fontWeight: 500,
-                                color: '#64748b',
+                                color: '#7a6a5c',
                                 offsetY: -8
                             },
                             value: {
                                 show: true,
                                 fontSize: '26px',
                                 fontWeight: 800,
-                                color: '#0f172a',
+                                color: '#1f140d',
                                 offsetY: 8,
                                 formatter: function (val) {
                                     return val + "%";
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 label: 'Total Count',
                                 fontSize: '11px',
                                 fontWeight: 500,
-                                color: '#64748b',
+                                color: '#7a6a5c',
                                 formatter: function (w) {
                                     return '565K';
                                 }
