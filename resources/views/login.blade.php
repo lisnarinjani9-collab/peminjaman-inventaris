@@ -30,7 +30,6 @@
                 <div class="brand-mark"><i class="bi bi-box-seam"></i></div>
                 <span>Peminjaman Inventaris</span>
             </div>
-
             <div>
                 <h2 class="brand-title">Peminjaman aset kantor, <span>tercatat rapi</span> dari awal sampai kembali.</h2>
                 <p class="brand-desc">Satu sistem untuk mengajukan, menyetujui, menyerahkan, dan mengembalikan aset perusahaan.</p>
